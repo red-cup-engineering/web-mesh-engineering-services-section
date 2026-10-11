@@ -1,5 +1,5 @@
 {
-  "name": "@red-cup-engineering/mesh-networking-service",
+  "name": "@red-cup-engineering/web-mesh-services-section",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -56,9 +56,9 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@red-cup-engineering/http-edge-service": "0.0.1",
-    "@red-cup-engineering/http-server-core-service": "0.0.1",
-    "@red-cup-engineering/relating": "0.0.1"
+    "@red-cup-engineering/http-edge-service": "workspace:*",
+    "@red-cup-engineering/http-server-core-service": "workspace:*",
+    "@red-cup-engineering/relating": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
