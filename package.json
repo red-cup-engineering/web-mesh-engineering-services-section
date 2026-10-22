@@ -71,5 +71,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/red-cup-engineering/web-mesh-services-section.git"
+  },
+  "license": "MIT",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/561-group/.github/blob/main/TIPS.md"
   }
 }
