@@ -1,5 +1,5 @@
 {
-  "name": "@red-cup-engineering/web-mesh-services-section",
+  "name": "@red-cup-engineering/web-mesh-engineering-services-section",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -70,7 +70,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/red-cup-engineering/web-mesh-services-section.git"
+    "url": "git+https://github.com/red-cup-engineering/web-mesh-engineering-services-section.git"
   },
   "license": "MIT",
   "funding": {
