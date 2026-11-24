@@ -1,0 +1,23 @@
+{
+  "name": "@red-cup-engineering/web-mesh-engineering-services-section",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Peer-to-peer mesh networking over HTTP: Kademlia peer discovery, gossip and anti-entropy replication, content-addressed storage, DTN bundles, and a Nostr relay. Moved out of the HTTP section since it is a networking topology concern, not an HTTP-serving one.",
+  "files": [
+    "package.json"
+  ],
+  "exports": {
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@red-cup-engineering/http-edge-service": "workspace:*",
+    "@red-cup-engineering/http-server-core-service": "workspace:*",
+    "@red-cup-engineering/eavt-engineering-services-section": "^0.15.3",
+    "@red-cup-engineering/json-engine": "^0.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/red-cup-engineering/web-mesh-engineering-services-section.git"
+  },
+  "license": "MIT"
+}
