@@ -6,6 +6,7 @@
 // This implements the NIP-01 protocol message format only. Signature verification
 // requires secp256k1 — provide a verify callback or use the no-op (dev mode).
 
+import { sha256Hex } from "@red-cup-engineering/semiotic-content-address-system";
 import * as crypto from "node:crypto";
 import { witness, UtteranceLog, recallWhere } from "@red-cup-engineering/http-server-core-service/internal/witness";
 import type { WsSession } from "@red-cup-engineering/http-edge-service/ws";
@@ -48,7 +49,7 @@ export type NostrClientMessage =
 
 function eventId(event: Omit<NostrEvent, "id" | "sig">): string {
   const data = JSON.stringify([0, event.pubkey, event.created_at, event.kind, event.tags, event.content]);
-  return crypto.createHash("sha256").update(data).digest("hex");
+  return sha256Hex(data);
 }
 
 function filterMatches(event: NostrEvent, filter: NostrFilter): boolean {

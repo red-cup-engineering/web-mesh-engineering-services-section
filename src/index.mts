@@ -1,7 +1,7 @@
 export { PeerRegistry, parsePeerAddress } from "./address.mjs";
 export type { PeerId, PeerAddress, PeerHealth } from "./address.mjs";
 
-export { peerDiscovery, RoutingTable, xorDistance, compareDistance, bucketIndex, findNode, encodeDnsMessage, decodeDnsMessage, DNS_TYPE, sha256 } from "./discovery.mjs";
+export { peerDiscovery, RoutingTable, xorDistance, compareDistance, bucketIndex, findNode, encodeDnsMessage, decodeDnsMessage, DNS_TYPE, nodeIdOf } from "./discovery.mjs";
 export type { PeerDiscovery, PeerDiscoveryOptions, PeerRecord, KadContact } from "./discovery.mjs";
 
 export { gossipNode, meshResources, GossipNode } from "./gossip.mjs";

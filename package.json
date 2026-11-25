@@ -10,10 +10,11 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
+    "@red-cup-engineering/eavt-engineering-services-section": "^0.15.3",
     "@red-cup-engineering/http-edge-service": "workspace:*",
     "@red-cup-engineering/http-server-core-service": "workspace:*",
-    "@red-cup-engineering/eavt-engineering-services-section": "^0.15.3",
-    "@red-cup-engineering/json-engine": "^0.5.4"
+    "@red-cup-engineering/json-engine": "^0.5.4",
+    "@red-cup-engineering/semiotic-content-address-system": "0.1.9"
   },
   "repository": {
     "type": "git",

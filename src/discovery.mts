@@ -8,6 +8,7 @@
 // The dgram socket is best-effort: if multicast fails (CI, container) discovery
 // degrades to an in-memory routing table and emits "error" once; it never throws.
 
+import { sha256 } from "@red-cup-engineering/semiotic-content-address-system";
 import * as crypto from "node:crypto";
 import * as dgram from "node:dgram";
 import { EventEmitter } from "node:events";
@@ -21,9 +22,9 @@ const DEFAULT_K = 20;
 // ── Kademlia id arithmetic ────────────────────────────────────────────────────
 
 /** sha-256 of an arbitrary identity → a 32-byte node id buffer. */
-export function sha256(identity?: string | Buffer): Buffer {
+export function nodeIdOf(identity?: string | Buffer): Buffer {
   const input = identity ?? crypto.randomBytes(ID_BYTES);
-  return crypto.createHash("sha256").update(input).digest();
+  return Buffer.from(sha256(input));
 }
 
 /** XOR distance metric d(a,b) = a ⊕ b as a 32-byte Buffer. */
@@ -478,7 +479,7 @@ export function peerDiscovery(opts: PeerDiscoveryOptions = {}): PeerDiscovery {
   const svc = serviceType(serviceName);
   const selfId = Buffer.isBuffer(nodeId) && nodeId.length === ID_BYTES
     ? nodeId
-    : sha256(identity ?? `${instance}.${svc}`);
+    : nodeIdOf(identity ?? `${instance}.${svc}`);
   const instanceName = `${instance}.${svc}`;
 
   const emitter = new EventEmitter();
@@ -495,7 +496,7 @@ export function peerDiscovery(opts: PeerDiscoveryOptions = {}): PeerDiscovery {
       const hex = idPair.slice(3).trim();
       if (/^[0-9a-fA-F]{64}$/.test(hex)) return Buffer.from(hex, "hex");
     }
-    return sha256(name);
+    return nodeIdOf(name);
   };
 
   function ingest(msg: { answers: DecodedRR[]; additionals: DecodedRR[] }): void {

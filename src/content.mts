@@ -4,6 +4,7 @@
 // The CID is a hex-encoded SHA-256 digest (base16, no multicodec prefix — simple and dependency-free).
 // Stored charge evidence determines whether content at a CID is locally available.
 
+import { sha256Hex } from "@red-cup-engineering/semiotic-content-address-system";
 import * as crypto from "node:crypto";
 import { cellValues, chargeOfUtterances, witness, UtteranceLog, recallWhere } from "@red-cup-engineering/http-server-core-service/internal/witness";
 import type { App } from "@red-cup-engineering/http-server-core-service/types";
@@ -11,7 +12,7 @@ import type { App } from "@red-cup-engineering/http-server-core-service/types";
 export type Cid = string; // hex SHA-256
 
 export function cidOf(data: Buffer | Uint8Array): Cid {
-  return crypto.createHash("sha256").update(data).digest("hex");
+  return sha256Hex(data);
 }
 
 export class ContentStore {
