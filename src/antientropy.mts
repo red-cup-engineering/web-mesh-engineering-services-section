@@ -15,7 +15,7 @@
 // never cross the wire; provenance never entered the log, so nothing else
 // rides beside the utterance wire form.
 
-import { sha256Hex } from "@red-cup-engineering/semiotic-content-address-system";
+import { sha256Hex, semanticHex } from "@red-cup-engineering/semiotic-content-address-system";
 import * as http from "node:http";
 import * as https from "node:https";
 import * as crypto from "node:crypto";
@@ -42,7 +42,7 @@ type SyncResponse = { missing: JsonValue | null; digest: string[] };
 
 function hashUtterance(carrier: UtteranceCarrier): string {
   const dehydrated = dehydrateUtterances([carrier]);
-  return sha256Hex(JSON.stringify(dehydrated)).slice(0, 16);
+  return semanticHex(dehydrated).slice(0, 16);
 }
 
 async function postJson(address: string, path: string, body: unknown, timeoutMs: number): Promise<unknown> {
